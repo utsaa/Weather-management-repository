@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  react-app:
+    build:
+      context: . # Path to the Dockerfile
+      dockerfile: DockerFile
+    ports:
+      - "3002:3002" # Map container port 3000 to host port 3000
+    volumes:
+      - .:/app # Mount the app directory for live code updates
+      - /app/node_modules # Prevent overwriting node_modules with the volume
+    command: npx nodemon start # Start the app with nodemon
